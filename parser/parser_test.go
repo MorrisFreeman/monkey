@@ -10,8 +10,8 @@ import (
 func TestLetStatements(t *testing.T) {
 	input := `
 let x = 5;
-let y = 10
-let foobar = 838383
+let y = 10;
+let foobar = 838383;
 `
 	l := lexer.New(input)
 	p := New(l)
@@ -41,7 +41,7 @@ let foobar = 838383
 	}
 }
 
-func testLetStatement(t *testing.T, s ast.Statement, name string) {
+func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
 	if s.TokenLiteral() != "let" {
 		t.Errorf("s.TokenLiteral not 'let'. got %q", s.TokenLiteral())
 		return false
