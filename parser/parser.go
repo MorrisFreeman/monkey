@@ -246,7 +246,7 @@ func (p *Parser) parseIntegerLiteral() ast.Expression {
 func (p *Parser) parsePrefixEcpression() ast.Expression {
 	expression := &ast.PrefixExpression{
 		Token:    p.curToken,
-		Operater: p.curToken.Literal,
+		Operator: p.curToken.Literal,
 	}
 
 	p.nextToken()

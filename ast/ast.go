@@ -121,7 +121,7 @@ func (il *IntegerLiteral) String() string       { return il.Token.Literal }
 
 type PrefixExpression struct {
 	Token    token.Token
-	Operater string
+	Operator string
 	Right    Expression
 }
 
@@ -131,7 +131,7 @@ func (pe *PrefixExpression) String() string {
 	var out bytes.Buffer
 
 	out.WriteString("(")
-	out.WriteString(pe.Operater)
+	out.WriteString(pe.Operator)
 	out.WriteString(pe.Right.String())
 	out.WriteString(")")
 
