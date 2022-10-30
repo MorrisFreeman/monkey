@@ -7,6 +7,7 @@ import (
 
 	"github.com/MorrisFreeman/monkey/evalutor"
 	"github.com/MorrisFreeman/monkey/lexer"
+	"github.com/MorrisFreeman/monkey/object"
 	"github.com/MorrisFreeman/monkey/parser"
 )
 
@@ -14,10 +15,12 @@ const PROMPT = ">> "
 
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
+	env := object.NewEnvironment()
 
 	for {
 		fmt.Printf(PROMPT)
 		scanned := scanner.Scan()
+
 		if !scanned {
 			return
 		}
@@ -32,7 +35,7 @@ func Start(in io.Reader, out io.Writer) {
 			continue
 		}
 
-		evaluted := evalutor.Eval(program)
+		evaluted := evalutor.Eval(program, env)
 		if evaluted != nil {
 			io.WriteString(out, evaluted.Inspect())
 			io.WriteString(out, "\n")
